@@ -1,7 +1,7 @@
 version: '3'
 services:
   node:
-    image: 'aeternity/aeternity:bundle_package-bundle'
+    image: 'aeternity/aeternity:master-bundle'
     hostname: node
     environment:
       AETERNITY_CONFIG: /home/aeternity/aeternity.yaml
@@ -9,6 +9,12 @@ services:
       bin/aeternity console -noinput -aehttp enable_debug_endpoints true
     volumes:
       - './aeternity.yaml:/home/aeternity/aeternity.yaml'
+      - './accounts_test.json:/home/aeternity/node/data/aecore/.genesis/accounts_test.json'
+  compiler:
+    hostname: compiler
+    image: 'aeternity/aesophia_http:v6.0.2'
+    ports:
+      - '3080:3080'
   proxy:
     image: 'nginx:1.13.8'
     hostname: proxy

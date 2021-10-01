@@ -1,3 +1,7 @@
+http:
+  endpoints:
+    dry-run: true
+
 chain:
     persist: false
 
