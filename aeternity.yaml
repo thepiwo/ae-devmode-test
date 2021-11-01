@@ -7,9 +7,6 @@ http:
   endpoints:
     dry-run: true
 
-chain:
-  persist: true
-
 system:
   plugin_path: /home/aeternity/node/plugins
   plugins:
@@ -23,6 +20,7 @@ fork_management:
   network_id: ae_dev
 
 chain:
+  persist: true
   consensus:
     "0":
       name: "on_demand"
@@ -36,3 +34,8 @@ websocket:
   channel:
     port: 3014
     listen_address: 0.0.0.0
+
+logging:
+  # Controls the overload protection in the logs.
+  hwm: 50
+  level: debug
